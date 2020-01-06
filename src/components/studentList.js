@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class StudentList extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			student: [],
+		};
 	}
+
+	componentDidMount() {
+		axios.get('http://localhost:3000/student').then(res => {
+			this.setState({ student: res.data });
+		});
+	}
+
+	getTableData = () => {};
 
 	render() {
 		const styles = {
 			marginTop: '10px',
 		};
+
 		return (
 			<div className="container">
 				<div className="d-flex justify-content-between">
@@ -27,21 +40,23 @@ class StudentList extends Component {
 							<th>Action</th>
 						</tr>
 					</thead>
+
 					<tbody>
-						<tr>
-							<td>01</td>
-							<td>atikrant</td>
-							<td>Male</td>
-							<td>khandwa</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>02</td>
-							<td>abcdef</td>
-							<td>Female</td>
-							<td>pune</td>
-							<td></td>
-						</tr>
+						{this.state.student.length > 0
+							? this.state.student.map(data => {
+									return (
+										<tr>
+											<td>{data.id}</td>
+											<td>{data.uname}</td>
+											<td>{data.gender}</td>
+											<td>{data.city}</td>
+											<td>
+												<a href="#">Edit</a>&nbsp;&nbsp;| <a href="#">Delete</a>
+											</td>
+										</tr>
+									);
+							  })
+							: null}
 					</tbody>
 				</table>
 			</div>
