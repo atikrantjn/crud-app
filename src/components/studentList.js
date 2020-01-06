@@ -11,14 +11,14 @@ class StudentList extends Component {
 		};
 		return (
 			<div className="container">
-				<div className="container">
+				<div className="d-flex justify-content-between">
 					<h4 style={styles}>Student Dashboard</h4>
-					{/* <Link to="/add" className="btn btn-outline-primary btn-sm mb-3">
-						Create
-					</Link> */}
+					<a href="#" className="btn btn-outline-primary btn-sm mb-3 mt-3">
+						Add Student
+					</a>
 				</div>
 				<table className="table table-hover">
-					<thead>
+					<thead className="thead-dark">
 						<tr>
 							<th>Id</th>
 							<th>Name</th>
