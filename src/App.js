@@ -1,16 +1,16 @@
 import React from 'react';
-import StudentList from './components/studentList';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
+import Addstudent from './components/addstudent';
 
 function App() {
 	return (
-		<div className="App">
-			<div className="container mt-5">
-				<div className="card">
-					<StudentList />
-				</div>
-			</div>
-		</div>
+		<Router>
+			<Switch>
+				<Route exact path="/" component={Addstudent}></Route>
+			</Switch>
+		</Router>
+		// <div>Hello</div>
 	);
 }
 
