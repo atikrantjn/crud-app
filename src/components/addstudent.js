@@ -25,69 +25,88 @@ class AddStudent extends Component {
 	};
 
 	render() {
+		const btnStyles = {
+			display: 'flex',
+			flexDirection: 'row',
+		};
 		return (
 			<div className="container">
 				<div className="d-flex justify-content-between">
 					<h4>Add Student</h4>
 				</div>
 				<form>
-					<label> Name:</label>
-					<input
-						type="text"
-						placeholder="Enter Name"
-						value={this.state.name}
-						onChange={e => {
-							this.setState({ name: e.target.value });
-						}}
-					></input>
-					<label> Gender:</label>
-					<input
-						type="radio"
-						name="gender"
-						defaultChecked
-						value="Male"
-						onChange={e => {
-							this.setState({ gender: e.target.value });
-						}}
-					></input>
-					Male
-					<input
-						type="radio"
-						name="gender"
-						value="Female"
-						onChange={e => {
-							this.setState({ gender: e.target.value });
-						}}
-					></input>
-					Female
-					<label> City:</label>
-					<input
-						type="text"
-						placeholder="Enter City"
-						value={this.state.city}
-						onChange={e => {
-							this.setState({ city: e.target.value });
-						}}
-					></input>
-					<input type="checkbox" checked={this.state.isChecked} onChange={this.toggleChange}></input>
-					<span>I agree with terms and conditions</span>
-					<button onClick={this.validation}>Submit</button>
-					<button onClick={this.clearForm}>Clear</button>
+					<div className="form-group col-md-6">
+						<label> Name:</label>
+						<input
+							className="form-control"
+							type="text"
+							placeholder="Enter Name"
+							value={this.state.name}
+							onChange={e => {
+								this.setState({ name: e.target.value });
+							}}
+						/>
+					</div>
+					<div className="form-check form-check-inline">
+						<label className="form-check-label"> Gender:&nbsp;</label>
+						<input
+							className="form-check-input"
+							type="radio"
+							name="gender"
+							value="Male"
+							onChange={e => {
+								this.setState({ gender: e.target.value });
+							}}
+						></input>
+						<label className="form-check-label">Male</label>
+					</div>
+					<div className="form-check form-check-inline">
+						<input
+							className="form-check-input"
+							type="radio"
+							name="gender"
+							value="Female"
+							onChange={e => {
+								this.setState({ gender: e.target.value });
+							}}
+						></input>
+						<label className="form-check-label">Female</label>
+					</div>
+
+					<div className="form-group col-md-6">
+						<label> City:</label>
+						<input
+							className="form-control"
+							type="text"
+							placeholder="Enter City"
+							value={this.state.city}
+							onChange={e => {
+								this.setState({ city: e.target.value });
+							}}
+						></input>
+					</div>
+					<div className="form-check form-check-inline">
+						<input
+							type="checkbox"
+							className="form-check-input"
+							checked={this.state.isChecked}
+							onChange={this.toggleChange}
+						></input>
+						<span>I agree with terms and conditions</span>
+					</div>
+					<div style={btnStyles}>
+						<button className="btn btn-primary" onClick={this.validation}>
+							Submit
+						</button>
+						&nbsp;&nbsp;&nbsp;
+						<button className="btn btn-primary" onClick={this.clearForm}>
+							Clear
+						</button>
+					</div>
 				</form>
-				Hello
 			</div>
 		);
 	}
 }
 
 export default AddStudent;
-// import React, { Component } from 'react';
-// class Demo extends Component {
-// 	constructor(props) {
-// 		super(props);
-// 	}
-// 	render() {
-// 		return <div>Hello</div>;
-// 	}
-// }
-// export default Demo;
