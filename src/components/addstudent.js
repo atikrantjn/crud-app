@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class AddStudent extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: '',
+			uname: '',
 			gender: '',
 			city: '',
 			isChecked: false,
@@ -16,11 +17,36 @@ class AddStudent extends Component {
 		});
 	};
 
-	validation = () => {
+	// validation = () => {
+	// 	if (this.state.name === '' || this.state.city === '' || this.state.isChecked === false) {
+	// 		alert('error');
+	// 	} else {
+	// 		alert('Success');
+	// 	}
+	// };
+
+	submitHandler = e => {
+		e.preventDefault();
+		const postData = {
+			uname: this.state.uname,
+			gender: this.state.gender,
+			city: this.state.city,
+			isChecked: this.state.isChecked,
+		};
 		if (this.state.name === '' || this.state.city === '' || this.state.isChecked === false) {
 			alert('error');
 		} else {
 			alert('Success');
+
+			axios.post('http://localhost:3000/student', postData).then(res => {
+				if (res.status === 201) {
+					axios
+						.get('http://localhost:3000/student/')
+						.then(resp => console.log(resp, 'resp'))
+						.catch(error => console.log(error));
+				}
+			});
+			this.props.history.push('/');
 		}
 	};
 
@@ -45,9 +71,9 @@ class AddStudent extends Component {
 							className="form-control"
 							type="text"
 							placeholder="Enter Name"
-							value={this.state.name}
+							value={this.state.uname}
 							onChange={e => {
-								this.setState({ name: e.target.value });
+								this.setState({ uname: e.target.value });
 							}}
 						/>
 					</div>
@@ -99,7 +125,7 @@ class AddStudent extends Component {
 						<span>I agree with terms and conditions</span>
 					</div>
 					<div style={btnStyles}>
-						<button className="btn btn-primary" onClick={this.validation}>
+						<button className="btn btn-primary" onClick={this.submitHandler}>
 							Submit
 						</button>
 						&nbsp;&nbsp;&nbsp;

@@ -1,22 +1,3 @@
 {
-	"student": [
-		{
-			"id": 2,
-			"uname": "dfdfg",
-			"gender": "female",
-			"city": "kolhapur"
-		},
-		{
-			"id": 4,
-			"uname": "atikrant j",
-			"gender": "male",
-			"city": "kolhapur"
-		},
-		{
-			"id": 5,
-			"uname": " xyz abc",
-			"gender": "male",
-			"city": "mumbai"
-		}
-	]
+  "student": []
 }

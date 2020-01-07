@@ -12,10 +12,21 @@ class StudentList extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('http://localhost:3000/student').then(res => {
+		axios.get('http://localhost:3000/student/').then(res => {
 			this.setState({ student: res.data });
 		});
 	}
+
+	deleteStudData = id => {
+		const conf = window.prompt('Are you sure you want to delete?? ');
+		if (conf) {
+			axios.delete('http://localhost:3000/student/' + id).then(res => {
+				axios.get('http://localhost:3000/student/').then(res => {
+					this.setState({ student: res.data });
+				});
+			});
+		}
+	};
 
 	render() {
 		const styles = {
@@ -45,13 +56,16 @@ class StudentList extends Component {
 						{this.state.student.length > 0
 							? this.state.student.map(data => {
 									return (
-										<tr>
+										<tr key={data.id}>
 											<td>{data.id}</td>
 											<td>{data.uname}</td>
 											<td>{data.gender}</td>
 											<td>{data.city}</td>
 											<td>
-												<a href="#">Edit</a>&nbsp;&nbsp;| <a href="#">Delete</a>
+												<a href="#">Edit</a>&nbsp;&nbsp;|
+												<a href="#" onClick={() => this.deleteStudData(data.id)}>
+													Delete
+												</a>
 											</td>
 										</tr>
 									);
