@@ -17,14 +17,6 @@ class AddStudent extends Component {
 		});
 	};
 
-	// validation = () => {
-	// 	if (this.state.name === '' || this.state.city === '' || this.state.isChecked === false) {
-	// 		alert('error');
-	// 	} else {
-	// 		alert('Success');
-	// 	}
-	// };
-
 	submitHandler = e => {
 		e.preventDefault();
 		const postData = {
@@ -34,15 +26,16 @@ class AddStudent extends Component {
 			isChecked: this.state.isChecked,
 		};
 		if (this.state.name === '' || this.state.city === '' || this.state.isChecked === false) {
-			alert('error');
+			alert('Please fill all the data before submitting!!');
 		} else {
-			alert('Success');
+			alert('Data added successfully!!');
 
 			axios.post('http://localhost:3000/student', postData).then(res => {
+				console.log(res);
 				if (res.status === 201) {
 					axios
 						.get('http://localhost:3000/student/')
-						.then(resp => console.log(resp, 'resp'))
+						.then(resp => console.log(resp))
 						.catch(error => console.log(error));
 				}
 			});

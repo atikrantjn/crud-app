@@ -1,3 +1,18 @@
 {
-  "student": []
+  "student": [
+    {
+      "uname": "dfgdfg",
+      "gender": "Male",
+      "city": "dfgdfg",
+      "isChecked": true,
+      "id": 3
+    },
+    {
+      "uname": "dfg",
+      "gender": "Male",
+      "city": "dg",
+      "isChecked": true,
+      "id": 4
+    }
+  ]
 }
