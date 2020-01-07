@@ -28,14 +28,18 @@ class AddStudent extends Component {
 		const btnStyles = {
 			display: 'flex',
 			flexDirection: 'row',
+			marginBottom: '10px',
+		};
+		const styleContainer = {
+			border: '1px solid #cecece',
 		};
 		return (
-			<div className="container">
-				<div className="d-flex justify-content-between">
-					<h4>Add Student</h4>
+			<div className="container mt-5" style={styleContainer}>
+				<div className="d-flex justify-content-center">
+					<h3>Add Student</h3>
 				</div>
 				<form>
-					<div className="form-group col-md-6">
+					<div className="form-group col-md-6 ">
 						<label> Name:</label>
 						<input
 							className="form-control"
@@ -48,7 +52,7 @@ class AddStudent extends Component {
 						/>
 					</div>
 					<div className="form-check form-check-inline">
-						<label className="form-check-label"> Gender:&nbsp;</label>
+						<label> Gender:&nbsp;</label>
 						<input
 							className="form-check-input"
 							type="radio"
