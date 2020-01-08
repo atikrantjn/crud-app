@@ -32,9 +32,12 @@ class StudentList extends Component {
 		const styles = {
 			marginTop: '10px',
 		};
+		const styleContainer = {
+			border: '1px solid #cecece',
+		};
 
 		return (
-			<div className="container">
+			<div className="container mt-5" style={styleContainer}>
 				<div className="d-flex justify-content-between">
 					<h4 style={styles}>Student Dashboard</h4>
 					<Link to="/add" className="btn btn-outline-primary btn-sm mb-3 mt-3">

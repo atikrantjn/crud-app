@@ -28,18 +28,10 @@ class AddStudent extends Component {
 		if (this.state.name === '' || this.state.city === '' || this.state.isChecked === false) {
 			alert('Please fill all the data before submitting!!');
 		} else {
-			alert('Data added successfully!!');
-
 			axios.post('http://localhost:3000/student', postData).then(res => {
-				console.log(res);
-				if (res.status === 201) {
-					axios
-						.get('http://localhost:3000/student/')
-						.then(resp => console.log(resp))
-						.catch(error => console.log(error));
-				}
+				alert('Data added successfully!!');
+				this.props.history.push('/');
 			});
-			this.props.history.push('/');
 		}
 	};
 
